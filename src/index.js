@@ -2,7 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
+import AllPost from './AllPost';
 import reportWebVitals from './reportWebVitals';
+import {BrowserRouter, Switch, Route} from 'react-router-dom'
 
 import { createStore } from 'redux'
 import { Provider } from 'react-redux';
@@ -15,7 +17,12 @@ const store = createStore(bookReducer , window.__REDUX_DEVTOOLS_EXTENSION__ && w
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      <App />
+    <BrowserRouter>
+            <Switch>
+                <Route path="/" exact component={App}/>
+                <Route path="/create" exact component={AllPost}/>
+            </Switch>
+        </BrowserRouter>
     </Provider>
   </React.StrictMode>,
   document.getElementById('root')

@@ -2,16 +2,15 @@ import react , { Component } from "react";
 import PostBook from "./PostBook";
 import AllPost from "./AllPost";
 
+import NavbarComponent from "./NavbarComponent";
+
 class App extends Component {
   render(){
     return (
-      <div className="container-sm">
-        <div className="navbar">
-          <h2 className="center">Book it</h2>
-        </div>
+      <div className="container-sm mt-5">
+        <NavbarComponent />
         <PostBook />
-        <h2 className="center mt-5">Book list</h2>
-        <AllPost />
+      
       </div>
     );
   }

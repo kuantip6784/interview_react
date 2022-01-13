@@ -1,35 +1,42 @@
-import React, { Component , useState} from "react";
+import React, { Component } from "react";
 import { connect } from "react-redux";
 
- class PostBook extends Component {
+import NavbarComponent from "./NavbarComponent";
 
-    SubmitBook = (e) => {
-        e.preventDefault()
-        const BookName = this.getBookName.value
-        const Date_readStart = this.getDate_readStart.value
-        const Date_readEnd = this.getDate_readEnd.value
-        const Author_name = this.getAuthor_name.value
-        const data = {
-            id : new Date(),
-            BookName,
-            Date_readStart,
-            Date_readEnd,
-            Author_name,
+class PostBook extends Component {
+  // fileSelet = e => {
+  //     formData = new FormData();
+  //     formData.append('file', e.target.files[0])
+  // }
 
-            //การแก้ไข
-            EditBook: false
-        }
-        
-        this.props.dispatch({
-            type: 'ADD_BOOK',
-            data
-        })
-        this.getBookName.value = ''
-        this.getDate_readStart.value = ''
-        this.getDate_readEnd.value = ''
-        this.getAuthor_name.value = ''
-    }
+  SubmitBook = (e) => {
+    e.preventDefault();
+    const BookName = this.getBookName.value;
+    const Date_readStart = this.getDate_readStart.value;
+    const Date_readEnd = this.getDate_readEnd.value;
+    const Author_name = this.getAuthor_name.value;
 
+    const data = {
+      id: new Date(),
+      BookName,
+      Date_readStart,
+      Date_readEnd,
+      Author_name,
+      // formData,
+
+      //การแก้ไข
+      EditBook: false,
+    };
+
+    this.props.dispatch({
+      type: "ADD_BOOK",
+      data,
+    });
+    this.getBookName.value = "";
+    this.getDate_readStart.value = "";
+    this.getDate_readEnd.value = "";
+    this.getAuthor_name.value = "";
+  };
 
   render() {
     return (
@@ -41,7 +48,7 @@ import { connect } from "react-redux";
               <div class="mb-2  col-sm-12 col-lg-6">
                 <label class="form-label">ชื่อหนังสือ</label>
                 <input
-                  ref={(value_input) => this.getBookName = value_input}
+                  ref={(value_input) => (this.getBookName = value_input)}
                   type="text"
                   class="form-control"
                 />
@@ -49,7 +56,7 @@ import { connect } from "react-redux";
               <div class="mb-2 col-sm-6 col-lg-6">
                 <label class="form-label">วันที่เริ่มอ่าน</label>
                 <input
-                  ref={(value_input) => this.getDate_readStart = value_input}
+                  ref={(value_input) => (this.getDate_readStart = value_input)}
                   type="date"
                   class="form-control"
                 />
@@ -57,7 +64,7 @@ import { connect } from "react-redux";
               <div class="mb-2  col-sm-6 col-lg-6">
                 <label class="form-label">วันที่อ่านจบ</label>
                 <input
-                  ref={(value_input) => this.getDate_readEnd = value_input}
+                  ref={(value_input) => (this.getDate_readEnd = value_input)}
                   type="date"
                   class="form-control"
                 />
@@ -65,7 +72,7 @@ import { connect } from "react-redux";
               <div class="mb-2 col-lg-6">
                 <label class="form-label">ชื่อคนเขียน</label>
                 <input
-                  ref={(value_input) => this.getAuthor_name = value_input}
+                  ref={(value_input) => (this.getAuthor_name = value_input)}
                   type="text"
                   class="form-control"
                 />
@@ -73,6 +80,8 @@ import { connect } from "react-redux";
               <div class="mb-2 col-lg-6">
                 <label class="form-label">รูปปก</label>
                 <input
+                  // ref={(value_input) => this.fileImg = value_input}
+                  onChange={this.fileSelet}
                   type="file"
                   accept="image/*"
                   class="form-control"
@@ -80,7 +89,9 @@ import { connect } from "react-redux";
               </div>
 
               <div class="Post_div mt-3">
-                <button type="submit" class="btn btn-primary">Post</button>
+                <button type="submit" class="btn btn-primary">
+                  Post
+                </button>
               </div>
             </form>
           </div>
@@ -90,4 +101,4 @@ import { connect } from "react-redux";
   }
 }
 
-export default connect()(PostBook)
+export default connect()(PostBook);
